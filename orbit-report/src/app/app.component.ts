@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Satellite } from './satellite';
+import { Satellite } from './satellite';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +11,7 @@ export class AppComponent {
   // title = 'orbit-report';
   sourceList: Satellite [];
   displayList: Satellite [];
+  // count: number;
   constructor() {
     this.sourceList = [];
     let satellitesUrl = 'https://handlers.education.launchcode.org/static/satellites.json';
