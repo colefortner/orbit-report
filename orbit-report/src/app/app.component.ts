@@ -11,6 +11,7 @@ export class AppComponent {
   
   sourceList: Satellite [];
   displayList: Satellite [];
+  value: string = '';
 
   constructor() {
     this.sourceList = [];
@@ -27,13 +28,18 @@ export class AppComponent {
       }.bind(this));
     }.bind(this));
   }
+
+  // https://www.youtube.com/watch?v=Wo9nfK2fEyw  radioChangeHandler video
+ radioChangeHandler(event: any){
+   this.value = event.target.value;
+ }
+
   search(searchTerm: string, searchColumn: string): void {
-    // let arr = [name, type, orbit]
-    console.log(searchColumn);
+
+    // console.log(searchColumn);
     let matchingSatellites: Satellite[] = [];
     searchTerm = searchTerm.toLowerCase();
     for(let i=0; i < this.sourceList.length; i++) {
-      //  let name = this.sourceList[i][searchColumn].toLowerCase();
        let name = this.sourceList[i][searchColumn].toLowerCase();
        if (name.indexOf(searchTerm) >= 0) {
           matchingSatellites.push(this.sourceList[i]);

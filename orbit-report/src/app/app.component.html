@@ -4,10 +4,13 @@
 <app-orbit-list [satellites]='displayList'></app-orbit-list>
 <div class="search-form">
     Search Column:<br>
-    <label>Name<input #searchColumn type="radio" name="searchColumn" value="name"/></label>
-    <label>Type<input #searchColumn type="radio" name="searchColumn" value="type"/></label>
-    <label>Orbit Type<input #searchColumn type="radio" name="searchColumn" value="orbitType"/></label><br>
-    <input #searchTerm type="text" (keyup.enter)="search(searchTerm.value, searchColumn.value)">
-    <button (click)="search(searchTerm.value, searchColumn.value)">Search</button>
+    <div class="clickety-clack">
+        <label>Name<input type="radio" name="searchColumn" id="column" value="name" (change)="radioChangeHandler($event)"/></label>
+        <label>Type<input type="radio" name="searchColumn" id="column" value="type" (change)="radioChangeHandler($event)"/></label>
+        <label>Orbit Type<input id="test" type="radio" name="searchColumn" id="column" value="orbitType" (change)="radioChangeHandler($event)"/></label><br>
+    </div>
+    <!-- <input #searchColumn type="text"> -->
+    <input #searchTerm type="text" (keyup.enter)="search(searchTerm.value, value)">
+    <button (click)="search(searchTerm.value, value)">Search</button> 
 </div>
 <app-orbit-counts [satellites]='displayList'></app-orbit-counts>
