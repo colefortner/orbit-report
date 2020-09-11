@@ -8,10 +8,10 @@ import { Satellite } from './satellite';
 })
 
 export class AppComponent {
-  // title = 'orbit-report';
+  
   sourceList: Satellite [];
   displayList: Satellite [];
-  // count: number;
+
   constructor() {
     this.sourceList = [];
     let satellitesUrl = 'https://handlers.education.launchcode.org/static/satellites.json';
@@ -27,11 +27,14 @@ export class AppComponent {
       }.bind(this));
     }.bind(this));
   }
-  search(searchTerm: string): void {
+  search(searchTerm: string, searchColumn: string): void {
+    // let arr = [name, type, orbit]
+    console.log(searchColumn);
     let matchingSatellites: Satellite[] = [];
     searchTerm = searchTerm.toLowerCase();
     for(let i=0; i < this.sourceList.length; i++) {
-       let name = this.sourceList[i].name.toLowerCase();
+      //  let name = this.sourceList[i][searchColumn].toLowerCase();
+       let name = this.sourceList[i][searchColumn].toLowerCase();
        if (name.indexOf(searchTerm) >= 0) {
           matchingSatellites.push(this.sourceList[i]);
        }
@@ -40,5 +43,4 @@ export class AppComponent {
     // this will cause Angular to re-make the table, but now only containing matches
     this.displayList = matchingSatellites;
  }
-
 }
